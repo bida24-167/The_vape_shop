@@ -331,3 +331,100 @@ footer{border-top:1px solid var(--border);padding:clamp(30px,5vh,56px) clamp(14p
 
 @keyframes fU{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fIn{from{opacity:0;}to{opacity:1;}}
+
+/* ===========================
+   BOOTSTRAP OVERRIDES
+   =========================== */
+.tvh-nav {
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 14px clamp(14px,3.5vw,56px);
+  transition: all .4s;
+  background: transparent;
+}
+.tvh-nav.sc {
+  background: rgba(7,6,10,.96) !important;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px clamp(14px,3.5vw,56px);
+}
+.navbar-collapse {
+  background: rgba(7,6,10,.97);
+}
+@media(min-width:992px){
+  .navbar-collapse { background: transparent; }
+}
+
+/* toggler custom */
+.tvh-toggler {
+  border: 1px solid var(--border2) !important;
+  padding: 4px 8px;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.tvh-toggler span {
+  display: block; width: 20px; height: 2px; background: var(--a); margin: 4px 0; transition: all .3s;
+}
+
+/* nav link overrides */
+.tvh-link {
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  transition: color .28s !important;
+  padding: 8px 0 !important;
+}
+.tvh-link:hover { color: var(--a) !important; }
+
+/* fix product section padding for Bootstrap */
+.tvh-section {
+  padding: clamp(36px,6vh,88px) 0;
+}
+
+/* Botswana payment cards */
+.bw-pay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.bw-pay-card {
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 10px 8px;
+  text-align: center;
+  background: var(--bg3);
+  transition: transform .25s, border-color .25s;
+}
+.bw-pay-card:hover { transform: translateY(-2px); border-color: var(--a); }
+.bw-pay-logo { margin-bottom: 5px; display: flex; justify-content: center; }
+.bw-pay-logo svg { border-radius: 3px; }
+.bw-pay-sub { font-size: 8px; font-weight: 500; letter-spacing: 1px; color: var(--muted); }
+.pay-accept-label { font-size: 8px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--a); margin-bottom: 10px; }
+
+/* WhatsApp button */
+.wa-btn {
+  display: block;
+  padding: 11px;
+  border: 1px solid rgba(37,211,102,.35);
+  color: #25d366 !important;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: all .28s;
+  text-align: center;
+  margin-top: 10px;
+}
+.wa-btn:hover { background: rgba(37,211,102,.1); border-color: #25d366; }
+
+/* Bootstrap modal reset — use our custom overlay instead */
+.tvh-modal {
+  border-radius: 4px !important;
+  border: none !important;
+}
