@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-  <title>The Vape House — Premium Vapor Shop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>The Vape House — Premium Vapor Shop Botswana</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,13 +23,13 @@
   <div class="wlc-fire">🔥</div>
   <div class="wlc-sub">Premium Vapor Shop &amp; Lounge · Botswana</div>
   <h1 class="wlc-title">
-    <span style="font-weight:400;font-style:italic;">Welcome to</span><br>
+    <span style="font-weight:400;font-style:italic;display:block;">Welcome to</span>
     <span class="gt">The Vape House</span>
   </h1>
   <div class="wlc-line"></div>
-  <p class="wlc-desc">Botswana's home of premium disposables, pods &amp; flavours. New arrivals every week. Fire prices, elite experience.</p>
-  <button class="wlc-btn" onclick="goToAgeGate()"><span>Enter The House →</span></button>
-  <p class="wlc-warn">⚠ This site contains nicotine products. For adults only.</p>
+  <p class="wlc-desc">Botswana's trusted source of premium disposable vapes. New arrivals every week. Fire prices, elite experience.</p>
+  <button class="wlc-btn" onclick="goToAgeGate()"><span>Enter The House &rarr;</span></button>
+  <p class="wlc-warn">&#9888; This site contains nicotine products. Adults only.</p>
 </div>
 
 <!-- ================================================
@@ -35,41 +42,61 @@
   <div class="ag-note">You must be of legal age to enter this site.</div>
   <div class="ag-btns">
     <button class="ag-yes" onclick="enter()">Yes — I'm 21 or older</button>
-    <button class="ag-no"  onclick="location.href='https://google.com'">No — Exit</button>
+    <button class="ag-no"  onclick="window.location.href='https://www.google.com'">No — Exit</button>
   </div>
-  <p class="ag-disc">By entering you confirm you are of legal smoking/vaping age. Nicotine is addictive.</p>
+  <p class="ag-disc">By entering you confirm you are of legal smoking/vaping age. Nicotine is an addictive chemical.</p>
 </div>
 
-<!-- Cursor -->
-<div id="cur"></div><div id="cur2"></div>
-<!-- Toast -->
-<div class="toast" id="toast"></div>
+<!-- Cursor dots -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- Toast notification -->
+<div class="toast-msg" id="toast"></div>
 
 <!-- Lightbox -->
 <div class="lb" id="lb">
-  <button class="lb-close" id="lbCloseBtn" onclick="closeLb()">✕</button>
-  <img class="lb-img" id="lbImg" src="" alt="Product">
+  <button class="lb-close" onclick="closeLb()">&#10005;</button>
+  <img class="lb-img" id="lbImg" src="" alt="Product detail">
 </div>
 
 <!-- ================================================
-     NAV
+     NAVBAR
      ================================================ -->
-<nav id="nav">
-  <a href="#home" class="nav-logo"><span class="the">The </span><span class="gt">Vape House</span></a>
-  <ul class="nav-links" id="navlinks">
-    <li><a href="#collection">Products</a></li>
-    <li><a href="#contact-section">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="#" class="nav-cart" onclick="openCart(event)">Cart <span class="n-badge" id="badge">0</span></a>
-    <div class="hamburger" id="ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+<nav class="navbar navbar-expand-lg tvh-nav" id="nav">
+  <div class="container-fluid px-3 px-md-4">
+
+    <!-- Logo -->
+    <a class="navbar-brand nav-logo" href="#home">
+      <span class="the">The </span><span class="gt">Vape House</span>
+    </a>
+
+    <!-- Mobile cart + toggler -->
+    <div class="d-flex align-items-center gap-2 d-lg-none">
+      <a href="#" class="nav-cart" onclick="openCart(event)">
+        Cart <span class="n-badge" id="badge-mobile">0</span>
+      </a>
+      <button class="navbar-toggler tvh-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4 py-3 py-lg-0">
+        <li class="nav-item"><a class="tvh-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="tvh-link" href="#collection">Products</a></li>
+        <li class="nav-item"><a class="tvh-link" href="#contact-section">Contact</a></li>
+        <li class="nav-item d-none d-lg-block">
+          <a href="#" class="nav-cart ms-2" onclick="openCart(event)">
+            Cart <span class="n-badge" id="badge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </nav>
-
-<div class="mobile-nav" id="mnav" style="display:none;">
-  <a href="#collection"     onclick="toggleMobile()">Products</a>
-  <a href="#contact-section" onclick="toggleMobile()">Contact</a>
-</div>
 
 <!-- ================================================
      HERO
@@ -77,6 +104,7 @@
 <section class="hero" id="home">
   <div class="hero-bg-glow"></div>
   <div class="hero-grid-lines"></div>
+
   <div class="hero-left">
     <div class="h-eyebrow"><span class="h-eyebrow-dot"></span>Premium Vapor Shop · Botswana</div>
     <h1 class="hero-title">
@@ -85,7 +113,11 @@
       <span class="gt">WORLD</span>
     </h1>
     <div class="hero-divider"></div>
-    <p class="hero-desc">The Vape House — Botswana's trusted source for premium disposables. Up to 28,000 puffs. Call us: <strong style="color:var(--a);">+267 74 509 800</strong></p>
+    <p class="hero-desc">
+      Botswana's trusted source of premium disposable vapes.
+      Up to 28,000 puffs. Call us:
+      <a href="tel:78456656" style="color:var(--a);font-weight:600;text-decoration:none;">78456656</a>
+    </p>
     <div class="hero-btns">
       <a href="#collection" class="btn-fire"><span>Shop Now</span></a>
       <a href="#contact-section" class="btn-ghost">Contact Us</a>
@@ -93,16 +125,24 @@
     <div class="hero-stats">
       <div class="hs-stat"><div class="hs-n">11+</div><div class="hs-l">Products</div></div>
       <div class="hs-stat"><div class="hs-n">28K</div><div class="hs-l">Max Puffs</div></div>
-      <div class="hs-stat"><div class="hs-n">5★</div><div class="hs-l">Rated</div></div>
+      <div class="hs-stat"><div class="hs-n">5&#9733;</div><div class="hs-l">Rated</div></div>
     </div>
   </div>
+
   <div class="hero-right">
     <div class="h-orbit"></div>
     <div class="hero-dev-wrap">
       <div class="hero-dev">
-        <div class="hd-smoke"><div class="hs hs1"></div><div class="hs hs2"></div><div class="hs hs3"></div></div>
+        <div class="hd-smoke">
+          <div class="hs hs1"></div><div class="hs hs2"></div><div class="hs hs3"></div>
+        </div>
         <div class="hd-tip"></div>
-        <div class="hd-body"><div class="hd-stripe hd-s1"></div><div class="hd-stripe hd-s2"></div><div class="hd-diamond"></div><div class="hd-led"></div></div>
+        <div class="hd-body">
+          <div class="hd-stripe hd-s1"></div>
+          <div class="hd-stripe hd-s2"></div>
+          <div class="hd-diamond"></div>
+          <div class="hd-led"></div>
+        </div>
         <div class="hd-glow"></div>
       </div>
     </div>
@@ -119,7 +159,7 @@
     <span class="mq-i"><span class="mq-gem"></span>Rodman 9,100 — P240</span>
     <span class="mq-i"><span class="mq-gem"></span>Adalya Love66 — P200</span>
     <span class="mq-i"><span class="mq-gem"></span>Pay via MyZaka · Orange Money · eWallet</span>
-    <span class="mq-i"><span class="mq-gem"></span>Call: +267 74 509 800</span>
+    <span class="mq-i"><span class="mq-gem"></span>Call: 78456656</span>
     <span class="mq-i"><span class="mq-gem"></span>Nasty Bar D14Ki — P500</span>
     <span class="mq-i"><span class="mq-gem"></span>Snapbar SD20000 — P280</span>
     <span class="mq-i"><span class="mq-gem"></span>Play by Nasty 28K — P350</span>
@@ -127,22 +167,26 @@
     <span class="mq-i"><span class="mq-gem"></span>Rodman 9,100 — P240</span>
     <span class="mq-i"><span class="mq-gem"></span>Adalya Love66 — P200</span>
     <span class="mq-i"><span class="mq-gem"></span>Pay via MyZaka · Orange Money · eWallet</span>
-    <span class="mq-i"><span class="mq-gem"></span>Call: +267 74 509 800</span>
+    <span class="mq-i"><span class="mq-gem"></span>Call: 78456656</span>
   </div>
 </div>
 
 <!-- ================================================
-     PRODUCTS
+     PRODUCTS  — Bootstrap 3-per-row grid
      ================================================ -->
-<section class="section" id="collection">
-  <div class="s-head rev">
-    <div>
-      <div class="eyebrow">Our Products</div>
-      <h2 class="sec-title"><span class="gt">All</span> Products</h2>
+<section class="tvh-section" id="collection">
+  <div class="container-fluid px-3 px-md-4">
+    <div class="s-head rev mb-4">
+      <div>
+        <div class="eyebrow">Our Products</div>
+        <h2 class="sec-title"><span class="gt">All</span> Products</h2>
+      </div>
     </div>
-  </div>
-  <div class="pgrid" id="productGrid">
-    <!-- Cards injected by JS from images.js -->
+
+    <!-- Bootstrap row: 1 col mobile, 2 col sm, 3 col md+ -->
+    <div class="row g-3" id="productGrid">
+      <!-- Injected by JS -->
+    </div>
   </div>
 </section>
 
@@ -151,81 +195,146 @@
   <canvas class="fire-canvas" id="fireCanvas"></canvas>
   <div class="fire-content">
     <div class="fire-tagline">Feel the Flame.</div>
-    <div class="fire-sub">The Vape House · Botswana</div>
+    <div class="fire-sub">The Vape House · Botswana's Trusted Vape Shop</div>
   </div>
 </div>
 
 <!-- ================================================
-     CONTACT PAGE
+     CONTACT SECTION
      ================================================ -->
-<section class="section contact-page" id="contact-section">
-  <div class="s-head rev">
-    <div>
-      <div class="eyebrow">Get In Touch</div>
-      <h2 class="sec-title"><span class="gt">Contact</span> Us</h2>
-    </div>
-  </div>
-
-  <div class="contact-grid rev">
-
-    <!-- Left: contact details + payment methods -->
-    <div class="cg-panel">
-      <h3>Reach Us</h3>
-      <p>We're here to help. Reach out via call, WhatsApp, or social media. We respond fast!</p>
-
-      <div class="contact-items">
-        <a class="ci-row" href="tel:+26774509800">
-          <div class="ci-icon">📞</div>
-          <div class="ci-info"><div class="ci-lbl">Phone / WhatsApp</div><div class="ci-val">+267 74 509 800</div></div>
-        </a>
-        <a class="ci-row" href="https://www.facebook.com/THE VAPE HOUSE" target="_blank" rel="noopener">
-          <div class="ci-icon">📘</div>
-          <div class="ci-info"><div class="ci-lbl">Facebook</div><div class="ci-val">The Vape House</div></div>
-        </a>
-        <a class="ci-row" href="https://instagram.com/THE_VAPE_HOUSE2026" target="_blank" rel="noopener">
-          <div class="ci-icon">📷</div>
-          <div class="ci-info"><div class="ci-lbl">Instagram</div><div class="ci-val">@THE_VAPE_HOUSE2026</div></div>
-        </a>
+<section class="tvh-section contact-page" id="contact-section">
+  <div class="container-fluid px-3 px-md-4">
+    <div class="s-head rev mb-4">
+      <div>
+        <div class="eyebrow">Get In Touch</div>
+        <h2 class="sec-title"><span class="gt">Contact</span> Us</h2>
       </div>
+    </div>
 
-      <!-- Payment methods info -->
-      <div style="margin-top:28px;">
-        <div style="font-size:8px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--a);margin-bottom:12px;">We Accept</div>
-        <div class="pm-social">
-          <div class="pm-card-s">
-            <span class="pmc-icon">📱</span>
-            <div class="pmc-name">MyZaka</div>
-            <div class="pmc-num">BTC Mascom</div>
-          </div>
-          <div class="pm-card-s">
-            <span class="pmc-icon">🟠</span>
-            <div class="pmc-name">Orange<br>Money</div>
-            <div class="pmc-num">Orange BW</div>
-          </div>
-          <div class="pm-card-s">
-            <span class="pmc-icon">💼</span>
-            <div class="pmc-name">eWallet</div>
-            <div class="pmc-num">FNB BW</div>
-          </div>
+    <div class="contact-grid rev">
+
+      <!-- LEFT: contact info + payment methods -->
+      <div class="cg-panel">
+        <h3>Reach Us</h3>
+        <p>We're here to help. Reach out via call, WhatsApp, or social media — we respond fast!</p>
+
+        <div class="contact-items">
+
+          <!-- Phone (clickable, correct number) -->
+          <a class="ci-row" href="tel:78456656">
+            <div class="ci-icon">📞</div>
+            <div class="ci-info">
+              <div class="ci-lbl">Phone / WhatsApp</div>
+              <div class="ci-val">78456656</div>
+            </div>
+          </a>
+
+          <!-- Facebook (URL-encoded, no spaces) -->
+          <a class="ci-row" href="https://www.facebook.com/TheVapeHouse" target="_blank" rel="noopener noreferrer">
+            <div class="ci-icon">📘</div>
+            <div class="ci-info">
+              <div class="ci-lbl">Facebook</div>
+              <div class="ci-val">The Vape House</div>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a class="ci-row" href="https://www.instagram.com/THE_VAPE_HOUSE2026/" target="_blank" rel="noopener noreferrer">
+            <div class="ci-icon">📷</div>
+            <div class="ci-info">
+              <div class="ci-lbl">Instagram</div>
+              <div class="ci-val">@THE_VAPE_HOUSE2026</div>
+            </div>
+          </a>
+
+          <!-- WhatsApp direct link -->
+          <a class="ci-row" href="https://wa.me/26778456656" target="_blank" rel="noopener noreferrer">
+            <div class="ci-icon">💬</div>
+            <div class="ci-info">
+              <div class="ci-lbl">WhatsApp Chat</div>
+              <div class="ci-val">Chat with us now</div>
+            </div>
+          </a>
+
         </div>
-        <div style="margin-top:10px;font-size:9px;color:var(--muted);line-height:1.8;">
-          Send payment to <strong style="color:var(--a);">+267 74 509 800</strong> on any of these platforms, then place your order and we'll confirm via WhatsApp.
+
+        <!-- Botswana Payment Methods -->
+        <div style="margin-top:28px;">
+          <div class="pay-accept-label">We Accept</div>
+          <div class="bw-pay-grid">
+
+            <!-- MyZaka — Mascom Botswana teal/green brand -->
+            <div class="bw-pay-card myzaka">
+              <div class="bw-pay-logo">
+                <svg viewBox="0 0 64 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="64" height="32" rx="6" fill="#00A651"/>
+                  <text x="32" y="21" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="white">MyZaka</text>
+                </svg>
+              </div>
+              <div class="bw-pay-sub">Mascom BW</div>
+            </div>
+
+            <!-- Orange Money — Orange Botswana orange brand -->
+            <div class="bw-pay-card orange-money">
+              <div class="bw-pay-logo">
+                <svg viewBox="0 0 64 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="64" height="32" rx="6" fill="#FF6600"/>
+                  <text x="32" y="14" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="8.5" fill="white">Orange</text>
+                  <text x="32" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="8.5" fill="white">Money</text>
+                </svg>
+              </div>
+              <div class="bw-pay-sub">Orange BW</div>
+            </div>
+
+            <!-- eWallet — FNB Botswana blue brand -->
+            <div class="bw-pay-card ewallet">
+              <div class="bw-pay-logo">
+                <svg viewBox="0 0 64 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="64" height="32" rx="6" fill="#003087"/>
+                  <text x="32" y="14" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="white">FNB</text>
+                  <text x="32" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="8" fill="white">eWallet</text>
+                </svg>
+              </div>
+              <div class="bw-pay-sub">FNB Botswana</div>
+            </div>
+
+          </div>
+          <p style="margin-top:10px;font-size:9px;color:var(--muted);line-height:1.8;">
+            Send payment to <strong style="color:var(--a);">78456656</strong> on any platform above,
+            then place your order and we confirm via WhatsApp.
+          </p>
         </div>
-      </div>
-    </div>
+      </div><!-- /cg-panel left -->
 
-    <!-- Right: send a message form -->
-    <div class="cg-panel">
-      <h3>Send a Message</h3>
-      <p>Fill in the form below and we'll get back to you as soon as possible — usually within the hour.</p>
-      <div class="cform">
-        <div class="cf-field"><label class="cf-label" for="cf-name">Your Name</label><input class="cfi" id="cf-name" type="text" placeholder="Full name"></div>
-        <div class="cf-field"><label class="cf-label" for="cf-phone">Phone / WhatsApp</label><input class="cfi" id="cf-phone" type="tel" placeholder="+267 7X XXX XXX"></div>
-        <div class="cf-field"><label class="cf-label" for="cf-msg">Message</label><textarea class="cfi" id="cf-msg" placeholder="What would you like to order or ask about?"></textarea></div>
-        <button class="csend" id="cf-send" onclick="sendMessage()"><span>Send Message →</span></button>
-      </div>
-    </div>
+      <!-- RIGHT: message form -->
+      <div class="cg-panel">
+        <h3>Send a Message</h3>
+        <p>Fill in the form below and we'll get back to you quickly — usually within the hour.</p>
+        <div class="cform">
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Your Name</label>
+            <input class="cfi" id="cf-name" type="text" placeholder="Full name">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-phone">Phone / WhatsApp</label>
+            <input class="cfi" id="cf-phone" type="tel" placeholder="7X XXX XXX">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-msg">Message</label>
+            <textarea class="cfi" id="cf-msg" rows="4" placeholder="What would you like to order or ask?"></textarea>
+          </div>
+          <button class="csend" id="cf-send" onclick="sendMessage()">
+            <span>Send Message &rarr;</span>
+          </button>
+          <!-- WhatsApp shortcut -->
+          <a href="https://wa.me/26778456656" target="_blank" rel="noopener noreferrer"
+             class="wa-btn mt-2 d-block text-center">
+            💬 Or chat directly on WhatsApp
+          </a>
+        </div>
+      </div><!-- /cg-panel right -->
 
+    </div><!-- /contact-grid -->
   </div>
 </section>
 
@@ -235,164 +344,261 @@
 <footer>
   <div>
     <span class="ft-logo"><span class="gt">The Vape House</span></span>
-    <p class="ft-p">Premium Vapor Shop &amp; Lounge, Botswana. New arrivals every week.</p>
+    <p class="ft-p">Botswana's trusted source of premium disposable vapes. New arrivals every week.</p>
   </div>
   <div class="ft-col">
     <h5>Products</h5>
-    <a href="#collection">Disposables</a>
+    <a href="#collection">All Products</a>
     <a href="#collection">New Arrivals</a>
   </div>
   <div class="ft-col">
     <h5>Contact</h5>
-    <a href="tel:+26774509800">+267 74 509 800</a>
-    <a href="#contact-section">Facebook</a>
-    <a href="#contact-section">Instagram</a>
+    <a href="tel:78456656">78456656</a>
+    <a href="https://wa.me/26778456656" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://www.facebook.com/TheVapeHouse" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com/THE_VAPE_HOUSE2026/" target="_blank" rel="noopener">Instagram</a>
   </div>
   <div class="ft-col">
-    <h5>Info</h5>
-    <a href="#">Age Policy</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
+    <h5>Legal</h5>
+    <a href="#home">Age Policy</a>
+    <a href="#home">Privacy</a>
+    <a href="#home">Terms</a>
   </div>
 </footer>
+
 <div class="ft-bot">
-  <span class="ft-copy">© 2026 The Vape House — All rights reserved</span>
-  <span class="ft-warn">⚠ 21+ Only · Nicotine is addictive</span>
+  <span class="ft-copy">&copy; 2026 The Vape House &mdash; All rights reserved</span>
+  <span class="ft-warn">&#9888; 21+ Only &middot; Nicotine is addictive</span>
 </div>
 
 <!-- ================================================
      CHECKOUT MODAL
      ================================================ -->
 <div class="overlay" id="ov">
-  <div class="modal">
+  <div class="modal tvh-modal" tabindex="-1">
     <div class="modal-fire-line"></div>
     <div class="modal-head">
       <div class="modal-ttl">Checkout</div>
-      <button class="modal-x" onclick="closeCart()">✕</button>
+      <button class="modal-x" onclick="closeCart()">&#10005;</button>
     </div>
     <div class="modal-body">
+
+      <!-- Cart items -->
       <div id="cItems"></div>
+
       <div class="ct-row">
         <div class="ct-lbl">Total</div>
         <div class="ct-amt" id="cTotal">P0</div>
       </div>
+
+      <!-- Payment section -->
       <div class="pf">
         <div class="pf-ttl">Payment Method</div>
 
+        <!-- Tabs: Botswana methods first -->
         <div class="pm-tabs">
-          <button class="pm-tab on" onclick="selectPayMethod('myzaka',this)"><span class="pm-icon">📱</span>MyZaka</button>
-          <button class="pm-tab"    onclick="selectPayMethod('orange',this)"><span class="pm-icon">🟠</span>Orange<br>Money</button>
-          <button class="pm-tab"    onclick="selectPayMethod('ewallet',this)"><span class="pm-icon">💼</span>eWallet</button>
-          <button class="pm-tab"    onclick="selectPayMethod('card',this)"><span class="pm-icon">💳</span>Card</button>
+          <button class="pm-tab on" onclick="selectPayMethod('myzaka',this)">
+            <span class="pm-icon">
+              <svg viewBox="0 0 40 20" width="40" height="20"><rect width="40" height="20" rx="3" fill="#00A651"/><text x="20" y="14" text-anchor="middle" font-family="Arial" font-weight="800" font-size="7.5" fill="white">MyZaka</text></svg>
+            </span>
+            MyZaka
+          </button>
+          <button class="pm-tab" onclick="selectPayMethod('orange',this)">
+            <span class="pm-icon">
+              <svg viewBox="0 0 40 20" width="40" height="20"><rect width="40" height="20" rx="3" fill="#FF6600"/><text x="20" y="9" text-anchor="middle" font-family="Arial" font-weight="800" font-size="6" fill="white">Orange</text><text x="20" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="6" fill="white">Money</text></svg>
+            </span>
+            Orange
+          </button>
+          <button class="pm-tab" onclick="selectPayMethod('ewallet',this)">
+            <span class="pm-icon">
+              <svg viewBox="0 0 40 20" width="40" height="20"><rect width="40" height="20" rx="3" fill="#003087"/><text x="20" y="9" text-anchor="middle" font-family="Arial" font-weight="800" font-size="7" fill="white">FNB</text><text x="20" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="5.5" fill="white">eWallet</text></svg>
+            </span>
+            eWallet
+          </button>
+          <button class="pm-tab" onclick="selectPayMethod('card',this)">
+            <span class="pm-icon">💳</span>Card
+          </button>
         </div>
 
-        <!-- MYZAKA -->
+        <!-- MYZAKA PANEL -->
         <div class="pm-panel" id="pm-myzaka" style="display:block;">
           <div class="pm-info">
-            <p>Send payment via <strong>MyZaka (BTC Mascom)</strong> to our number, then enter yours below to confirm.</p>
-            <div class="pm-send-to">Send to:</div>
-            <div class="pm-num">+267 74 509 800</div>
+            <p>Send your payment via <strong>MyZaka (Mascom BW)</strong> to our number, then fill in your details below.</p>
+            <div class="pm-send-to">Send payment to:</div>
+            <div class="pm-num">78456656</div>
             <ul class="pm-steps">
               <li>Open MyZaka on your phone</li>
-              <li>Send the total amount to the number above</li>
-              <li>Enter your number below and place order</li>
-              <li>We'll confirm on WhatsApp</li>
+              <li>Send the exact total to <strong>78456656</strong></li>
+              <li>Enter your number below &amp; tap Place Order</li>
+              <li>We confirm your order via WhatsApp</li>
             </ul>
           </div>
-          <div class="frow"><div class="ff full"><label class="fl">Your MyZaka Number</label><input class="fi" id="myzaka-phone" type="tel" placeholder="+267 7X XXX XXX"></div></div>
-          <div class="frow"><div class="ff full"><label class="fl">Your Name</label><input class="fi" id="myzaka-name" type="text" placeholder="Full name"></div></div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your MyZaka Number</label>
+              <input class="fi" id="myzaka-phone" type="tel" placeholder="7X XXX XXX">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your Full Name</label>
+              <input class="fi" id="myzaka-name" type="text" placeholder="Full name">
+            </div>
+          </div>
         </div>
 
-        <!-- ORANGE MONEY -->
+        <!-- ORANGE MONEY PANEL -->
         <div class="pm-panel" id="pm-orange">
           <div class="pm-info">
-            <p>Send payment via <strong>Orange Money (Orange Botswana)</strong> to our number, then enter yours below.</p>
-            <div class="pm-send-to">Send to:</div>
-            <div class="pm-num">+267 74 509 800</div>
+            <p>Send your payment via <strong>Orange Money (Orange Botswana)</strong> to our number, then fill in your details.</p>
+            <div class="pm-send-to">Send payment to:</div>
+            <div class="pm-num">78456656</div>
             <ul class="pm-steps">
               <li>Open Orange Money on your phone</li>
-              <li>Send the total amount to the number above</li>
-              <li>Enter your number below and place order</li>
-              <li>We'll confirm on WhatsApp</li>
+              <li>Send the exact total to <strong>78456656</strong></li>
+              <li>Enter your number below &amp; tap Place Order</li>
+              <li>We confirm your order via WhatsApp</li>
             </ul>
           </div>
-          <div class="frow"><div class="ff full"><label class="fl">Your Orange Number</label><input class="fi" id="orange-phone" type="tel" placeholder="+267 7X XXX XXX"></div></div>
-          <div class="frow"><div class="ff full"><label class="fl">Your Name</label><input class="fi" id="orange-name" type="text" placeholder="Full name"></div></div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your Orange Number</label>
+              <input class="fi" id="orange-phone" type="tel" placeholder="7X XXX XXX">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your Full Name</label>
+              <input class="fi" id="orange-name" type="text" placeholder="Full name">
+            </div>
+          </div>
         </div>
 
-        <!-- EWALLET -->
+        <!-- EWALLET PANEL -->
         <div class="pm-panel" id="pm-ewallet">
           <div class="pm-info">
-            <p>Send payment via <strong>FNB eWallet</strong> to our number, then enter yours below to confirm your order.</p>
-            <div class="pm-send-to">Send to:</div>
-            <div class="pm-num">+267 74 509 800</div>
+            <p>Send your payment via <strong>FNB eWallet (Botswana)</strong> to our number, then fill in your details.</p>
+            <div class="pm-send-to">Send payment to:</div>
+            <div class="pm-num">78456656</div>
             <ul class="pm-steps">
-              <li>Open FNB app or USSD eWallet</li>
-              <li>Send the total amount to the number above</li>
-              <li>Enter your number below and place order</li>
-              <li>We'll confirm on WhatsApp</li>
+              <li>Open FNB app or dial *164#</li>
+              <li>Send the exact total to <strong>78456656</strong></li>
+              <li>Enter your number below &amp; tap Place Order</li>
+              <li>We confirm your order via WhatsApp</li>
             </ul>
           </div>
-          <div class="frow"><div class="ff full"><label class="fl">Your eWallet Number</label><input class="fi" id="ew-phone" type="tel" placeholder="+267 7X XXX XXX"></div></div>
-          <div class="frow"><div class="ff full"><label class="fl">Your Name</label><input class="fi" id="ew-name" type="text" placeholder="Full name"></div></div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your eWallet Number</label>
+              <input class="fi" id="ew-phone" type="tel" placeholder="7X XXX XXX">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Your Full Name</label>
+              <input class="fi" id="ew-name" type="text" placeholder="Full name">
+            </div>
+          </div>
         </div>
 
-        <!-- CARD -->
+        <!-- CARD PANEL -->
         <div class="pm-panel" id="pm-card">
           <div class="ctt-row">
             <button class="ctt on" onclick="selectCardType(this)">VISA</button>
             <button class="ctt"    onclick="selectCardType(this)">MASTERCARD</button>
             <button class="ctt"    onclick="selectCardType(this)">AMEX</button>
           </div>
-          <div class="frow"><div class="ff full"><label class="fl">Cardholder Name</label><input class="fi" id="fn" type="text" placeholder="As on card" autocomplete="cc-name"></div></div>
-          <div class="frow"><div class="ff full"><label class="fl">Card Number</label><input class="fi" id="cn" type="text" placeholder="•••• •••• •••• ••••" maxlength="19" autocomplete="cc-number"></div></div>
           <div class="frow">
-            <div class="ff"><label class="fl">Expiry</label><input class="fi" id="ex" type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp"></div>
-            <div class="ff"><label class="fl">CVV</label><input class="fi" id="cv" type="text" placeholder="•••" maxlength="4" autocomplete="cc-csc"></div>
+            <div class="ff full">
+              <label class="fl">Cardholder Name</label>
+              <input class="fi" id="fn" type="text" placeholder="As on card" autocomplete="cc-name">
+            </div>
           </div>
-          <div class="frow"><div class="ff full"><label class="fl">Email</label><input class="fi" id="em" type="email" placeholder="your@email.com" autocomplete="email"></div></div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Card Number</label>
+              <input class="fi" id="cn" type="text" placeholder="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;" maxlength="19" autocomplete="cc-number">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="ff">
+              <label class="fl">Expiry</label>
+              <input class="fi" id="ex" type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp">
+            </div>
+            <div class="ff">
+              <label class="fl">CVV</label>
+              <input class="fi" id="cv" type="text" placeholder="&bull;&bull;&bull;" maxlength="4" autocomplete="cc-csc">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="ff full">
+              <label class="fl">Email for Receipt</label>
+              <input class="fi" id="em" type="email" placeholder="your@email.com" autocomplete="email">
+            </div>
+          </div>
         </div>
 
         <button class="pay-main" onclick="pay()"><span id="pb">Complete Purchase</span></button>
-        <div class="pay-sec-note">By completing your purchase you confirm you are 21+.<br>We'll confirm your order via WhatsApp on +267 74 509 800.</div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="pay-sec-note">
+          By placing your order you confirm you are 21+.<br>
+          We confirm orders via WhatsApp on <a href="tel:78456656" style="color:var(--a);">78456656</a>.
+        </div>
 
-<!-- Load embedded images first, then main script -->
+      </div><!-- /pf -->
+    </div><!-- /modal-body -->
+  </div><!-- /modal -->
+</div><!-- /overlay -->
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Embedded images (base64, no external files needed) -->
 <script src="images.js"></script>
+
+<!-- Build product cards -->
 <script>
-// Inject product cards from IMGS data
 const PRODUCTS = [
-  { key:'p1_snapbar',  name:'Snapbar SD20000',       desc:'20K Puffs · 5% Nic · AI Voice · Digital Screen', price:280 },
-  { key:'p2_nastybar', name:'Nasty Bar D14Ki',        desc:'14K Puffs · Cotton Candy · 5% Nic · Rechargeable', price:500 },
-  { key:'p3_boss',     name:'Boss Zoom Gummy Bear',   desc:'10K Puffs · Gummy Bear · Kamry', price:210 },
-  { key:'p4_adalya',   name:'Adalya Premium Love66',  desc:'500+ Puffs · Exotic Shisha · Type-C', price:200 },
-  { key:'p5_nastybar2',name:'Nasty Bar D14Ki v2',     desc:'14K Puffs · 50mg/mL · Rechargeable', price:500 },
-  { key:'p6_vaplos',   name:'Vaplos Spark 12000',     desc:'12K Puffs · Rich Tobacco · Smart Display', price:200 },
-  { key:'p7_rodman',   name:'Rodman 9,100 Puffs',     desc:'Cool Mint · Aloha Sun · 5% Nic · Type-C', price:240 },
-  { key:'p8_yovo',     name:'YOVO 8000 Puffs',        desc:'Watermelon Ice & Mango · 0.8Ω Mesh', price:200 },
-  { key:'p9_airis',    name:'Airis Speedy RS 15K',    desc:'Blue Razz Ice · Dual Mesh · Dual Mode', price:200 },
-  { key:'p10_jnr',     name:'JNR Crystal Pro Max',    desc:'5K Puffs · Lemon & Lime · 15ml E-Liquid', price:200 },
-  { key:'p11_play',    name:'Play by Nasty 28K',      desc:'28K Puffs · Fingerprint Touch · Dual Mesh', price:350 },
+  { key:'p1_snapbar',   name:'Snapbar SD20000',      desc:'20,000+ Puffs · 5% Nic · AI Voice Control · Digital Display', price:280 },
+  { key:'p2_nastybar',  name:'Nasty Bar D14Ki',       desc:'14,000+ Puffs · Cotton Candy · 5% Nicotine · Rechargeable',  price:500 },
+  { key:'p3_boss',      name:'Boss Zoom Gummy Bear',  desc:'10,000 Puffs · Gummy Bear Flavour · Kamry',                  price:210 },
+  { key:'p4_adalya',    name:'Adalya Premium Love66', desc:'500+ Puffs · Exotic Shisha · Type-C Fast Charging',          price:200 },
+  { key:'p5_nastybar2', name:'Nasty Bar D14Ki v2',    desc:'14,000+ Puffs · 50mg/mL · Rechargeable Battery',            price:500 },
+  { key:'p6_vaplos',    name:'Vaplos Spark 12000',    desc:'12,000 Puffs · Rich Tobacco · Smart Display · Type-C',       price:200 },
+  { key:'p7_rodman',    name:'Rodman 9,100 Puffs',    desc:'Cool Mint · By Aloha Sun · 5% Nicotine · Type-C Charging',   price:240 },
+  { key:'p8_yovo',      name:'YOVO 8000 Puffs',       desc:'Watermelon Ice & Mango · 0.8Ω Sub-Ohm Mesh · Dual Screen',  price:200 },
+  { key:'p9_airis',     name:'Airis Speedy RS 15K',   desc:'Blue Razz Ice · Dual Mesh Coil · Dual Mode Display',         price:200 },
+  { key:'p10_jnr',      name:'JNR Crystal Pro Max',   desc:'5,000+ Puffs · Lemon & Lime · 15ml E-Liquid · Type-C',      price:200 },
+  { key:'p11_play',     name:'Play by Nasty 28K',     desc:'28,000 Puffs · Fingerprint Touch · Dual Mesh · 850mAh',     price:350 },
 ];
+
 const grid = document.getElementById('productGrid');
 const delays = ['','d1','d2'];
+
 PRODUCTS.forEach((p, i) => {
-  const src = IMGS[p.key] || '';
+  const src = (typeof IMGS !== 'undefined' && IMGS[p.key]) ? IMGS[p.key] : '';
   const d = delays[i % 3];
-  grid.innerHTML += `
-    <div class="pc rev ${d}" onclick="openLb('${src}')">
-      <div class="pc-img"><img src="${src}" alt="${p.name}" loading="lazy"></div>
+  const col = document.createElement('div');
+  // Bootstrap: 1 col on xs, 2 on sm, 3 on md+
+  col.className = `col-12 col-sm-6 col-md-4`;
+  col.innerHTML = `
+    <div class="pc ${d}" onclick="openLb('${src}')">
+      <div class="pc-img">
+        <img src="${src}" alt="${p.name}" loading="lazy">
+      </div>
       <div class="pc-info">
         <div class="pc-name">${p.name}</div>
         <div class="pc-desc">${p.desc}</div>
-        <button class="atc" onclick="event.stopPropagation();addToCart('${p.name.replace(/'/g,"\\'")}',${p.price})">Add to Cart</button>
+        <button class="atc" onclick="event.stopPropagation();addToCart('${p.name.replace(/'/g,"\\'")}',${p.price})">
+          Add to Cart
+        </button>
       </div>
     </div>`;
+  grid.appendChild(col);
 });
 </script>
+
+<!-- Main scripts -->
 <script src="main.js"></script>
 </body>
 </html>
