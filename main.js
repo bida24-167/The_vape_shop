@@ -73,7 +73,7 @@ document.getElementById('lb').addEventListener('click', e => {
 });
 
 // ── PAYMENT TABS ──────────────────────────────
-let payMethod = 'card';
+let payMethod = 'myzaka';
 
 function selectPayMethod(method, el) {
   payMethod = method;
@@ -104,7 +104,8 @@ function removeFromCart(name) {
 }
 
 function updateBadge() {
-  document.getElementById('badge').textContent = cart.reduce((s, i) => s + i.qty, 0);
+  const cnt = cart.reduce((s, i) => s + i.qty, 0);
+  ['badge','badge-mobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=cnt;});
 }
 
 function showToast(msg) {
